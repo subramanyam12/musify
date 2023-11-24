@@ -90,6 +90,8 @@ const RecentSongs = () => {
                       ))}
                       </div>
                   ) : (
+                    <>
+                  { popular?.length ?(
                   popular?.map(({ id, image, name, album, primaryArtists, downloadUrl }, i) => (
                     <div key={id} className={`${song?.index === i && recentplaylistbool && 'bg-[#ffffff21] rounded-xl'} py-1 group flex justify-between items-center cursor-pointer max-sm:cursor-default`}>
                       <div className='flex items-center'>
@@ -106,6 +108,10 @@ const RecentSongs = () => {
 
                     </div>
                   ))
+                  ):(
+                  <div className='text-white text-center capitalize font-semibold'>no songs playing...</div>
+                  )}
+                  </>
                 )}
 
               </div>
