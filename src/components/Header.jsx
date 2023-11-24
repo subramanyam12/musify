@@ -4,7 +4,7 @@ import { AiFillPlayCircle } from 'react-icons/ai'
 import Artists from './Artists'
 import { APIFetch, playlistfetch } from '../APIFetch'
 import { setartistvalue } from '../Context'
-import { Routes, Route ,Link} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import Albums from './Albums'
 import Discover from './Discover'
 import Artistpage from './Artistpage'
@@ -93,10 +93,13 @@ const Header = () => {
    }
 
 
-
    const clickhandle = (type, title, id, url) => {
       setbool(true)
-      title = title.replaceAll("&quot;", '')
+      const replacelist = ["&quot;",'&amp;','(',')','&',';']
+      replacelist.forEach((item)=>{
+         title=title.replaceAll(item,'')
+      })
+   
       if (type === 'playlist' || type === 'album') {
          playlistfetch(type, type === 'playlist' ? 'id' : 'link', type === 'playlist' ? id : url)
             .then(res => {
@@ -228,7 +231,7 @@ const Header = () => {
 
          <div className='flex justify-between items-center text-white font-bold'>
 
-            <Link to='/'><img className='w-40 max-sm:w-32 max-sm:ml-2' src='Musifylogo.png' alt="musify" /></Link>
+            <img className='w-40 max-sm:w-32 max-sm:ml-2' src='Musifylogo.png' alt="musify" />
 
             <label className='flex relative max-sm:absolute max-sm:top-16 max-sm:left-[5vw] max-sm:w-full items-center gap-5'>
                <input type="search" onChange={(e) => onchangehandle(e.target.value)} value={searchquery} className='bg-[#ffffff17] w-[33vw] max-sm:w-[90vw] border-[1px] border-[#ffffff5b] placeholder:text-[#ffffff5e] rounded-3xl py-2 pl-12 pr-5 shadow-inner shadow-[#a3a0a088]  outline-none' placeholder='search for songs and artists...' />
