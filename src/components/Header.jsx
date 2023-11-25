@@ -240,7 +240,7 @@ const Header = () => {
          </div>
 
 
-         <div className='w-full max-sm:mt-16 h-full relative overflow-y-auto overflow-x-hidden scroll-none rounded-3xl'>
+         <div className='w-full max-sm:mt-16 h-full relative overflow-hidden rounded-3xl'>
 
             {bool ? <Nestsearchlayout setbool={setbool} nestdata={nestsearchdata} /> : null}
 

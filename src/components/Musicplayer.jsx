@@ -136,7 +136,7 @@ const Musicplayer = ({setrecentclose}) => {
 
   return (
     
-    <div className={` w-[25vw] max-sm:absolute max-sm:bottom-0 max-sm:w-full duration-200  ${!imageclose ? 'max-sm:h-[40vh]':'max-sm:h-[15vh]'} imageclosetransitition mx-auto px-[3vw] max-sm:px-[6vw] py-[2vw] flex flex-col gap-2 items-center rounded-3xl max-sm:rounded-b-none bg-gradient-to-b from-[#1b5ca1] to-[#2e5f6e] shadow shadow-gray-500`}>
+    <div className={` w-[25vw] max-sm:absolute max-sm:bottom-0 max-sm:w-full duration-200  ${!imageclose ? 'max-sm:h-[40vh]':' max-sm:h-[15vh] '} imageclosetransitition mx-auto px-[3vw] max-sm:px-[6vw] py-[2vw] flex flex-col gap-2 items-center rounded-3xl max-sm:rounded-b-none bg-gradient-to-b from-[#1b5ca1] to-[#2e5f6e] shadow shadow-gray-500`}>
         <div onClick={()=>setimageclose(prev=>!prev)} className='hidden max-sm:block absolute -top-4 right-6 text-[#ffffff4b] text-4xl'>{imageclose ? <IoIosArrowDropupCircle /> : <IoIosArrowDropdownCircle />}</div>
         <div ref={musicanime} className={`w-[40%] ${imageclose && 'max-sm:hidden'} mt-2 mb-5 relative aspect-square rounded-full flex items-center justify-center bg-gray-400`}>
             <img className=' aspect-square rounded-full object-cover' src={typeof songlist?.[musicindex]?.image ==='object' ? songlist?.[musicindex]?.image?.at(-1)?.link :songlist?.[musicindex]?.image || 'musicphoto.jpg'} alt="image" />

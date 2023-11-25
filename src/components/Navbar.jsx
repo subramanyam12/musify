@@ -43,8 +43,8 @@ const Navbar = () => {
 
     return (
         <>
-            <div onClick={() => setclose(prev => !prev)} className='absolute max-sm:p-1 z-20 hidden max-sm:block right-5 top-4 text-3xl text-gray-800'>{close ? <IoClose className='text-gray-400 relativ -mt-2' /> : <HiMenuAlt3 />}</div>
-            <div className={`w-[17vw] max-sm:w-[50%] overflow-hidden max-sm:z-10 h-full max-sm:h-fit max-sm:pb-5 max-sm:pt-12 ${!close && 'max-sm:hidden'} flex flex-col max-sm:absolute max-sm:right-0 max-sm:rounded-bl-3xl items-center gap-8 pt-5 bg-gradient-to-r from-[#00000057] max-sm:from-[#0000009a] max-sm:to-[#0000008a] to-[#0000002a]`}>
+            <div onClick={() => setclose(prev => !prev)} className='absolute max-sm:p-1 z-30 hidden max-sm:block right-5 top-4 text-3xl text-gray-800'>{close ? <IoClose className='text-gray-400 relativ -mt-2' /> : <HiMenuAlt3 />}</div>
+            <div className={`w-[17vw] max-sm:w-[50%] overflow-hidden max-sm:z-20 h-full max-sm:h-fit max-sm:pb-5 max-sm:pt-12 ${!close && 'max-sm:hidden'} flex flex-col max-sm:absolute max-sm:right-0 max-sm:rounded-bl-3xl items-center gap-8 pt-5 bg-gradient-to-r from-[#00000057] max-sm:from-[#0000009a] max-sm:to-[#0000008a] to-[#0000002a]`}>
                 <div className='flex flex-col max-sm:hidden gap-1 items-center'>
                     <div className='w-[5vw] aspect-square rounded-full flex items-center justify-center bg-[#ffffff60]'><img className='w-[80%] mt-[1px] mr-[1px] aspect-square object-cover' src='hiuser.png' alt='logo' /></div>
                     <h1 className='text-xl text-white font-bold'>hi user</h1>

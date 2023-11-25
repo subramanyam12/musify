@@ -8,6 +8,7 @@ const Nestsearchlayout = ({ setbool, nestdata }) => {
   const [loading, setloading] = useState(true)
   const  setsong  = setartistvalue()
   useEffect(() => {
+    window.screenTop=0;
     setTimeout(()=>setloading(false),1000)
     nestdata?.length && setnestsearchdata(nestdata)
   }, [nestdata])
@@ -23,7 +24,7 @@ const Nestsearchlayout = ({ setbool, nestdata }) => {
   }
   
   return (
-    <div className={`absolute ${!nestsearchdata?.length && 'hidden'} max-sm:pb-28 top-0 left-0 z-10 w-full h-[120%] overflow-hidden scroll-none bg-gradient-to-r from-[#026e70] to-[#005e78] rounded-3xl`}>
+    <div className='absolute max-sm:pb-40 pb-5 top-0 left-0 z-10 w-full h-[120%] overflow-hidde bg-gradient-to-r from-[#026e70] to-[#005e78] rounded-3xl'>
       <div className=' flex justify-center items-center p-3 absolute w-full bg-gradient-to-r from-[#026e70] to-[#005e78]'>
         <span className='font-bold text-xl capitalize text-shadow text-white'>Songs</span>
         <div onClick={close}  className=' w-8 h-8 rounded-full flex justify-center items-center relative left-[40%] max-sm:left-[35%] z-30 cursor-pointer'>

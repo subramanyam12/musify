@@ -72,7 +72,7 @@ const RecentSongs = () => {
         </div>
        
             <>
-              <div className='flex w-full h-[30vh] max-sm:h-[35vh] flex-col gap-3 overflow-y-auto scroll-none'>
+              <div className='flex w-full h-[30vh]  max-sm:h-[35vh] flex-col gap-3 overflow-y-auto scroll-none'>
                 {
                   loading ? (
                     <div className='mb-5'>
