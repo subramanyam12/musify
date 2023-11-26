@@ -39,7 +39,7 @@ const ADAlayout = ({ heading, data }) => {
                 [1, 2, 3, 4, 5, 6].map(item => (
                   <div key={item} className=" w-[15vw] max-sm:w-full h-fit rounded-b-2xl shadow-xl animate-pulse">
                     <div className="h-52 max-sm:h-[37vh] bg-gray-300"></div>
-                    <div className="px-6 py-5">
+                    <div className="px-6 py-4">
                       <div className="h-3 bg-gray-300 mb-2"></div>
                       <div className="h-2 bg-gray-300 w-1/2 ml-[25%]"></div>
                     </div>

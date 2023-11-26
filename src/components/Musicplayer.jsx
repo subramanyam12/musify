@@ -23,7 +23,7 @@ const Musicplayer = ({setrecentclose}) => {
     const audioplay=useRef(null)
     const musicanime=useRef()
    
-   
+  
   let localplaylist = JSON.parse(localStorage.getItem('playlist'))
   let localindex = JSON.parse( localStorage.getItem('currentindex'))
     useEffect(()=>{

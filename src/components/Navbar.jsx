@@ -40,7 +40,6 @@ const Navbar = () => {
         setclose(false)
     }
 
-
     return (
         <>
             <div onClick={() => setclose(prev => !prev)} className='absolute max-sm:p-1 z-30 hidden max-sm:block right-5 top-4 text-3xl text-gray-800'>{close ? <IoClose className='text-gray-400 relativ -mt-2' /> : <HiMenuAlt3 />}</div>

@@ -15,7 +15,7 @@ const RecentSongs = () => {
   const [loading, setloading] = useState(true)
   const [recentclose, setrecentclose] = useState(true)
 
-
+  
   useEffect(() => {
     setTimeout(()=>setloading(false),1000)
     setpopular(song?.nestsearchdata?.length ? song?.nestsearchdata : localplaylist)

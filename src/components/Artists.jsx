@@ -47,7 +47,7 @@ const Artists = () => {
                   artists.map(({ id, name, image }) => (
                     <div key={id} onClick={() => artistclickhandle(name)} className=' relative w-[13vw] max-sm:w-[35vw] aspect-square rounded-3xl shadow bg-[#ffffff1a] cursor-pointer max-sm:cursor-default'>
                       <img src={image?.at(-1)?.link} alt={name} className='w-full h-full rounded-3xl' />
-                      <div className='bg-[#1d1c1c15] text-white text-sm max-sm:text-xs backdrop-blur-lg font-semibold rounded-b-3xl  absolute bottom-0 text-center p-2 w-full '>{name.length > 15 ? name.substring(0, 15) + '...' : name}</div>
+                      <div style={{WebkitBackdropFilter:'blur(16px)'}} className='bg-[#1d1c1c15] text-white text-sm max-sm:text-xs backdrop-blur-lg font-semibold rounded-b-3xl  absolute bottom-0 text-center p-2 w-full '>{name.length > 15 ? name.substring(0, 15) + '...' : name}</div>
                     </div>
                   ))
                 )
