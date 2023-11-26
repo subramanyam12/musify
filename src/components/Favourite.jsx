@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { contextvalue,setartistvalue } from '../Context'
+import { setartistvalue } from '../Context'
 import { IoCloseOutline } from "react-icons/io5";
 
 

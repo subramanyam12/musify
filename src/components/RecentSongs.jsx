@@ -53,7 +53,7 @@ const RecentSongs = () => {
       let index = favourlist?.findIndex((item) => item.id === id)
       if (index === -1) {
         settempstore(prev => [...prev, id])
-        favourlist.push(song)
+        favourlist.unshift(song)
       } else {
         settempstore(prev => prev.filter(item => item !== id))
         favourlist.splice(index, 1)
