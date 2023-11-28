@@ -142,7 +142,7 @@ const Header = () => {
 
    }
 
-   const Laodingsearch = () => {
+   const Loadingsearch = () => {
       return (
          <>
             <div className='flex w-full max-sm:hidden flex-col gap-3 h-[10vw]'>
@@ -232,11 +232,11 @@ const Header = () => {
 
          <div className='flex justify-between items-center text-white font-bold'>
 
-            <img className='w-40 max-sm:w-32 max-sm:ml-2' src='Musifylogo.png' alt="musify" />
+            <img className='w-40 max-sm:w-32 max-sm:ml-2 ' src='Musifylogo.png' alt="musify" />
 
             <label className='flex relative max-sm:absolute max-sm:top-16 max-sm:left-[5vw] max-sm:w-full items-center gap-5'>
                <input type="search" onChange={(e) => onchangehandle(e.target.value)} value={searchquery} className='bg-[#ffffff17] w-[33vw] max-sm:w-[90vw] border-[1px] border-[#ffffff5b] placeholder:text-[#ffffff5e] rounded-3xl py-2 pl-12 pr-5 shadow-inner shadow-[#a3a0a088]  outline-none' placeholder='search for songs and artists...' />
-               <span className='absolute left-0 top-0 ml-2 cursor-pointer text-2xl rounded-xl p-2'><TbMusicSearch /></span>
+               <span className='absolute left-0 top-0 ml-2 cursor-pointer max-sm:cursor-default text-2xl opacity-70 rounded-xl p-2'><TbMusicSearch /></span>
             </label>
          </div>
 
@@ -250,7 +250,7 @@ const Header = () => {
                <div className='flex flex-wrap max-sm:flex-nowrap max-sm:flex-col w-full h-full max-sm:h-[80vh] max-sm:pb-40 overflow-y-auto scroll-none bg-gradient-to-r from-[#026e707e] to-[#005e7867] shadow rounded-3xl'>
                   {
                      searchloading ? (
-                        <Laodingsearch />
+                        <Loadingsearch />
                      ) : (
                         <>
                            {

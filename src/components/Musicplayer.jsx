@@ -33,7 +33,7 @@ const Musicplayer = ({setrecentclose}) => {
             song?.index !==musicindex && setmusicindex(song?.index)
         setwidthupdate(0)
         setTimeout(() =>{
-            audioplay.current?.play()
+            // audioplay.current?.play()
             setplaybool(audioplay.current?.paused)
         },1000)
         
@@ -144,8 +144,8 @@ const Musicplayer = ({setrecentclose}) => {
 
         <div className='text-center'>
             <div onClick={()=>setrecentclose(false)} className='hidden max-sm:block absolute left-6 text-2xl text-gray-400'><BiTimeFive /></div>
-            <p className='text-white font-bold'>{songlist?.[musicindex]?.name?.length>28 ? songlist[musicindex]?.name?.replaceAll("&quot;",'').substring(0,28)+'...' : songlist?.[musicindex]?.name?.replaceAll("&quot;",'') || 'song'}</p>
-            <span className={`text-gray-400 ${imageclose && 'max-sm:hidden'}`}>{songlist?.[musicindex]?.primaryArtists?.length>28 ? songlist[musicindex]?.primaryArtists.substring(0,28)+'...':songlist?.[musicindex]?.primaryArtists || 'artist'}</span>
+            <p className='text-white font-bold line-clamp-1'>{ songlist?.[musicindex]?.name?.replaceAll("&quot;",'') || 'song'}</p>
+            <span className={`text-gray-400 line-clamp-1 ${imageclose && 'max-sm:hidden'}`}>{songlist?.[musicindex]?.primaryArtists || 'artist'}</span>
         </div>
         
         <div className='w-full flex items-center justify-between font-semibold text-gray-400'>
