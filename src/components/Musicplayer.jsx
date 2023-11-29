@@ -33,7 +33,7 @@ const Musicplayer = ({setrecentclose}) => {
             song?.index !==musicindex && setmusicindex(song?.index)
         setwidthupdate(0)
         setTimeout(() =>{
-            // audioplay.current?.play()
+            audioplay.current?.play()
             setplaybool(audioplay.current?.paused)
         },1000)
         
