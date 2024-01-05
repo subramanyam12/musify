@@ -46,15 +46,15 @@ const Navbar = () => {
             <div className={`w-[17vw] max-sm:w-[50%] overflow-hidden max-sm:z-20 h-full max-sm:h-fit max-sm:pb-5 max-sm:pt-12 ${!close && 'max-sm:hidden'} flex flex-col max-sm:absolute max-sm:right-0 max-sm:rounded-bl-3xl items-center gap-8 pt-5 bg-gradient-to-r from-[#00000057] max-sm:from-[#0000009a] max-sm:to-[#0000008a] to-[#0000002a]`}>
                 <div className='flex flex-col max-sm:hidden gap-1 items-center'>
                     <div className='w-[5vw] aspect-square rounded-full flex items-center justify-center bg-[#ffffff60]'><img className='w-[80%] mt-[1px] mr-[1px] aspect-square object-cover' src='hiuser.png' alt='logo' /></div>
-                    <h1 className='text-xl text-white font-bold'>hi user</h1>
+                    <h1 className='text-xl text-white font-bold'>welcome</h1>
                 </div>
 
-                <div className='w-full pl-[2vw] max-sm:pl-[4vw] max-md:pl-l flex flex-col'>
+                <div className='w-full pl-[3vw] max-sm:pl-0  max-md:pl-l flex flex-col'>
 
-                    <div className='flex flex-col item-center w-full gap-2 capitalize'>
+                    <div className='flex flex-col item-center w-full gap-1 capitalize'>
                         {
                             menu.map(([Icon, Fill, name], i) => (
-                                <Link key={i} to={name === 'home' ? '/' : name} onClick={() => menuclickhandle(name)} className={`flex items-center w-full max-sm:cursor-default text-[#afaeae] ml-2 py-1 gap-3 relative duration-300  ${menuitem == name ? 'font-bold text-white before:absolute before:right-[8px] before:w-[5px] before:rounded-xl before:bg-[#ffffff73] before:h-full' : 'font-semibold'}`}>
+                                <Link key={i} to={name === 'home' ? '/' : name} onClick={() => menuclickhandle(name)} className={`flex items-center w-full max-sm:cursor-default text-[#afaeae] py-2 gap-3 relative duration-300 ${menuitem == name ? 'font-bold bg-[#ffffff11] max-sm:bg-[#ffffff28] pl-5 max-sm:rounded-l-none rounded-l-lg text-white before:absolute before:right-0 max-sm:before:left-0 before:w-[5px] before:rounded-xl before:bg-[#ffffff56] before:h-full' : 'font-semibold max-sm:pl-10'}`}>
                                     {menuitem === name ? <Fill className='text-xl' /> : <Icon className='text-xl' />}
                                     <span>{name}</span>
                                 </Link>

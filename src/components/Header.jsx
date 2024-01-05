@@ -96,7 +96,7 @@ const Header = () => {
 
    const clickhandle = (type, title, id, url) => {
       setbool(true)
-      const replacelist = ["&quot;",'&amp;','(',')','&',';']
+      const replacelist = ["&quot;",'&amp;','&#039;','(',')','&',';']
       replacelist.forEach((item)=>{
          title=title.replaceAll(item,'')
       })
