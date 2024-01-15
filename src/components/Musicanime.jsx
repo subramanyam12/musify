@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 const MusicAnime = () => {
   return (
-    <ul class="wave-menu">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>  
-  </ul>
-  )
-}
+    <ul className="wave-menu">
+      {Array(5)
+        .fill(1)
+        .map((_, i) => (
+          <li key={i}></li>
+        ))}
+    </ul>
+  );
+};
 
-export default MusicAnime
+export default MusicAnime;

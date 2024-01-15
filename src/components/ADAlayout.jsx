@@ -1,69 +1,92 @@
-import React, { useState,useEffect, memo } from 'react'
-import { playlistfetch } from '../APIFetch'
-import Nestsearchlayout from './Nestsearchlayout'
+import React, { useState, useEffect } from 'react';
 
+import { playlistfetch } from '../customhooks/APIFetch';
+import Nestsearchlayout from './search/Nestsearchlayout';
 
 const ADAlayout = ({ heading, data }) => {
-  const [nestsearchdata, setnestsearchdata] = useState([])
-  const [bool, setbool] = useState(false)
-  const [loading, setloading] = useState(true)
-  
-  useEffect(()=>{
-     setTimeout(()=>setloading(false),1000)
-  },[])
+  const [nestsearchdata, setnestsearchdata] = useState([]);
+  const [bool, setbool] = useState(false);
+  const [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setloading(false), 1000);
+  }, []);
 
   const clickhandle = (type, id, url) => {
-    setbool(true)
+    setbool(true);
     let queryname = type === 'playlist' ? 'id' : 'link';
-    let query = type === 'playlist' ? id : url
+    let query = type === 'playlist' ? id : url;
     playlistfetch(type, queryname, query)
       .then(res => {
-        setnestsearchdata(type === 'playlist' || !Array.isArray(res?.data?.data) ? res?.data?.data?.songs : res?.data?.data);
-        setloading(false)
-       
+        setnestsearchdata(
+          type === 'playlist' || !Array.isArray(res?.data?.data)
+            ? res?.data?.data?.songs
+            : res?.data?.data
+        );
+        setloading(false);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+  };
 
-  }
-  
   return (
-    <div className=' bg-[#ffffff28] overflow-y-auto scroll-none bg-red-10 w-full h-full max-sm:h-[83%]'>
+    <div className=" scroll-none bg-red-10 h-full w-full overflow-y-auto bg-[#ffffff28] max-sm:h-[83%]">
       {bool ? (
         <Nestsearchlayout setbool={setbool} nestdata={nestsearchdata} />
       ) : (
         <>
-          <h1 className='bg-[#fcf9f950] text-center border-gray-400 border-[1px] text-shadow sticky py-2 text-[black] w-full rounded-3xl capitalize top-0 font-bold text-xl'>{heading}</h1>
-          <div className='flex flex-wrap gap-5 px-5 pt-10 max-sm:px-10 w-full h-screen'>
-            {
-              loading ? (
-                [1, 2, 3, 4, 5, 6].map(item => (
-                  <div key={item} className=" w-[15vw] max-sm:w-full h-fit rounded-b-2xl shadow-xl animate-pulse">
-                    <div className="h-52 max-sm:h-[37vh] bg-gray-300"></div>
+          <h1 className="text-shadow sticky top-0 w-full rounded-3xl border-[1px] border-gray-400 bg-[#fcf9f950] py-2 text-center text-xl font-bold capitalize text-[black]">
+            {heading}
+          </h1>
+          <div className="flex h-screen w-full flex-wrap gap-5 px-5 pt-10 max-sm:px-10">
+            {loading
+              ? [1, 2, 3, 4, 5, 6].map(item => (
+                  <div
+                    key={item}
+                    className=" h-fit w-[15vw] animate-pulse rounded-b-2xl shadow-xl max-sm:w-full"
+                  >
+                    <div className="h-52 bg-gray-300 max-sm:h-[37vh]"></div>
                     <div className="px-6 py-4">
-                      <div className="h-3 bg-gray-300 mb-2"></div>
-                      <div className="h-2 bg-gray-300 w-1/2 ml-[25%]"></div>
+                      <div className="mb-2 h-3 bg-gray-300"></div>
+                      <div className="ml-[25%] h-2 w-1/2 bg-gray-300"></div>
                     </div>
                   </div>
                 ))
-
-              ) : (
-                data?.map(({ id, title, name, image, language, type, url }) => (
-                  <div key={id} onClick={() => clickhandle(type, id, url)} className='flex flex-col h-fit items-center shadow rounded-2xl shadow-gray-600 cursor-pointer'>
-                    <div className='w-[15vw] max-sm:w-full aspect-square'>
-                      <img className='w-full h-full' src={image?.at(-1)?.link} alt={title} />
+              : data?.map(({ id, title, name, image, language, type, url }) => (
+                  <div
+                    key={id}
+                    onClick={() => clickhandle(type, id, url)}
+                    className="flex h-fit cursor-pointer flex-col items-center rounded-2xl shadow shadow-gray-600"
+                  >
+                    <div className="aspect-square w-[15vw] max-sm:w-full">
+                      <img
+                        className="h-full w-full"
+                        src={image?.at(-1)?.link}
+                        alt={title}
+                      />
                     </div>
-                    <div className={`font-bold text-[#333232] bg-[#f7f4f477] w-full rounded-b-2xl text-sm ${heading == 'playlists' ? 'py-3' : 'py-2'} flex flex-col items-center justify-center`}>
-                      <p>{title ? title?.length > 20 ? title.substring(0, 20) + '...' : title : name?.length > 20 ? name.substring(0, 20) + '...' : name}</p>
-                      <span className='text-gray-600'>{language}</span>
+                    <div
+                      className={`w-full rounded-b-2xl bg-[#f7f4f477] text-sm font-bold text-[#333232] ${
+                        heading == 'playlists' ? 'py-3' : 'py-2'
+                      } flex flex-col items-center justify-center`}
+                    >
+                      <p>
+                        {title
+                          ? title?.length > 20
+                            ? title.substring(0, 20) + '...'
+                            : title
+                          : name?.length > 20
+                            ? name.substring(0, 20) + '...'
+                            : name}
+                      </p>
+                      <span className="text-gray-600">{language}</span>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
           </div>
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ADAlayout
+export default ADAlayout;

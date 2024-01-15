@@ -1,124 +1,116 @@
-
-body{
-    user-select: none;
+body {
+  user-select: none;
 }
 
-.scroll-none::-webkit-scrollbar{
-    width: 0px;
-    height: 0px;
+.scroll-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
 }
 
-.text-shadow{
-    text-shadow: 2px 1px 0 rgb(119, 118, 118);
+.text-shadow {
+  text-shadow: 2px 1px 0 rgb(119, 118, 118);
 }
 
-.imageclosetransitition{
-    transition: height 2s ease-out;
-} 
-
-
-
-.trendingscroll::-webkit-scrollbar{
-    cursor: pointer;
- height: 10px;
-
+.imageclosetransitition {
+  transition: height 2s ease-out;
 }
 
-.trendingscroll::-webkit-scrollbar-track{
-    border-radius: 5px;
-    background-color:rgba(211, 211, 211, 0.342);
-   }
+.trendingscroll::-webkit-scrollbar {
+  cursor: pointer;
+  height: 10px;
+}
 
-.trendingscroll::-webkit-scrollbar-thumb{
-   background-color: rgba(75, 74, 74, 0.973);
-   border-radius: 5px;
+.trendingscroll::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(211, 211, 211, 0.342);
+}
+
+.trendingscroll::-webkit-scrollbar-thumb {
+  background-color: rgba(75, 74, 74, 0.973);
+  border-radius: 5px;
+}
+
+.wave-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: ease 0.2s;
+  position: relative;
+}
+
+.wave-menu li {
+  list-style: none;
+  height: 20px;
+  width: 2px;
+  border-radius: 10px;
+  background: #3e4aca;
+  animation: wave1 0.3s infinite alternate;
+  transition: ease 0.2s;
+}
+
+.wave-menu li:nth-child(2) {
+  animation-name: wave2;
+  animation-delay: 0.2s;
+}
+
+.wave-menu li:nth-child(3) {
+  animation-name: wave3;
+  animation-delay: 0.23s;
+  animation-duration: 0.4s;
+}
+
+.wave-menu li:nth-child(4) {
+  animation-name: wave4;
+  animation-delay: 0.1s;
+  animation-duration: 0.3s;
+}
+
+.wave-menu li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes wave1 {
+  from {
+    transform: scaleY(1);
   }
 
-  .wave-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:3px;
-    cursor: pointer;
-    transition: ease 0.2s;
-    position: relative;
+  to {
+    transform: scaleY(0.5);
+    background-color: rgba(255, 0, 0, 0.568);
   }
-  
-  .wave-menu li{
-    list-style: none;
-    height: 20px;
-    width: 2px;
-    border-radius: 10px;
-    background: #3e4aca;
-    animation:wave1 0.3s infinite alternate;
-    transition: ease 0.2s;
-  }
-  
- 
-  .wave-menu li:nth-child(2) {
-    animation-name: wave2;
-    animation-delay: 0.2s;
-  }
-  
-  .wave-menu li:nth-child(3) {
-    animation-name: wave3;
-    animation-delay: 0.23s;
-    animation-duration: 0.4s;
-  }
-  
-  .wave-menu li:nth-child(4) {
-    animation-name: wave4;
-    animation-delay: 0.1s;
-    animation-duration: 0.3s;
-  }
-  
-  .wave-menu li:nth-child(5) {
-    animation-delay: 0.5s;
-  }
-  
-  @keyframes wave1 {
-    from {
-      transform: scaleY(1);
-    }
-  
-    to {
-      transform: scaleY(0.5);
-      background-color: rgba(255, 0, 0, 0.568);
-    }
-  }
-  
-  @keyframes wave2 {
-    from {
-      transform: scaleY(0.3);
-    }
-  
-    to {
-      transform: scaleY(0.6);
-      background-color: rgba(26, 25, 25, 0.582);
-      
-    }
-  }
-  
-  @keyframes wave3 {
-    from {
-      transform: scaleY(0.6);
-    }
-  
-    to {
-      transform: scaleY(0.8);
-      background-color: rgba(255, 0, 0, 0.753);
-    }
-  }
-  
-  @keyframes wave4 {
-    from {
-      transform: scaleY(0.2);
-    }
-  
-    to {
-      transform: scaleY(0.5);
-      background-color: rgb(4, 0, 255);
-    }
-  }
-  
+}
 
+@keyframes wave2 {
+  from {
+    transform: scaleY(0.3);
+  }
+
+  to {
+    transform: scaleY(0.6);
+    background-color: rgba(26, 25, 25, 0.582);
+  }
+}
+
+@keyframes wave3 {
+  from {
+    transform: scaleY(0.6);
+  }
+
+  to {
+    transform: scaleY(0.8);
+    background-color: rgba(255, 0, 0, 0.753);
+  }
+}
+
+@keyframes wave4 {
+  from {
+    transform: scaleY(0.2);
+  }
+
+  to {
+    transform: scaleY(0.5);
+    background-color: rgb(4, 0, 255);
+  }
+}
