@@ -46,10 +46,8 @@ const Musicplayer = ({ setrecentclose }) => {
       setplaybool(audioplay.current?.paused);
     }, 0);
     const keydownhandle = e => {
-      if (
-        e.code === 'Space' &&
-        !JSON.parse(sessionStorage.getItem('searchquery'))
-      ) {
+      if (JSON.parse(sessionStorage.getItem('searchquery'))) return;
+      if (e.code === 'Space') {
         playhandle();
       } else if (e.key === 'ArrowRight') {
         playforwardhandle();
