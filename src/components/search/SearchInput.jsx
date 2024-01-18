@@ -19,7 +19,7 @@ const SearchInput = ({ searchquery, setsearchquery, onchangehandle }) => {
           onClick={handleemptysearchquery}
           className={`absolute ${
             !searchquery && 'invisible'
-          } right-2 top-[5px] z-30 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full duration-100 hover:bg-[#ffffff38]`}
+          } right-2 top-[5px] z-10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full duration-100 hover:bg-[#ffffff38] max-sm:cursor-default`}
         >
           <span className="h-4 w-[2px] rotate-45 rounded-sm bg-[#c0bebe9d] before:absolute before:h-4 before:w-[2px] before:rotate-90 before:rounded-sm before:bg-[#c0bebe9d]"></span>
         </div>
