@@ -8,7 +8,7 @@ const Discover = () => {
 
   useEffect(() => {
     setdiscoverdata(homedata?.charts);
-  });
+  },[]);
   return <ADAlayout heading="old playlists" data={discoverdata} />;
 };
 

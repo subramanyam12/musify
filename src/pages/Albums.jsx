@@ -8,7 +8,7 @@ const Albums = () => {
 
   useEffect(() => {
     setalbumdata(homedata?.albums);
-  });
+  }, []);
 
   return <ADAlayout heading="albums" data={albumdata} />;
 };

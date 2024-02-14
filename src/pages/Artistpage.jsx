@@ -8,7 +8,7 @@ const Artistpage = () => {
 
   useEffect(() => {
     setartistdata(homedata?.playlists);
-  });
+  },[]);
 
   return <ADAlayout heading="playlists" data={artistdata} />;
 };
