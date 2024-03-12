@@ -70,17 +70,16 @@ const Musicplayer = ({ setrecentclose }) => {
   let localrecentlist = JSON.parse(localStorage.getItem('recentlist'));
   const addrecentlist = () => {
     if (!songlist?.[musicindex]) return;
-    const { id, image, name, album, primaryArtists, downloadUrl } =
+    const { id, image, name, artist, artists, downloadUrl } =
       songlist[musicindex];
     let storedata = {
       id,
-      image: typeof image === 'object' ? image?.at(-1)?.link : image,
+      image: typeof image === 'object' ? image?.at(-1)?.url : image,
       name,
-      album: album?.primaryArtists,
-      primaryArtists,
+      artist: artist ? artist : artists?.primary?.[0]?.name,
       downloadUrl:
         typeof downloadUrl === 'object'
-          ? downloadUrl?.at(-1)?.link
+          ? downloadUrl?.at(-1)?.url
           : downloadUrl,
     };
     if (localrecentlist?.length) {
@@ -171,9 +170,8 @@ const Musicplayer = ({ setrecentclose }) => {
 
   return (
     <div
-      className={` w-[25vw] duration-200 max-sm:absolute max-sm:bottom-0 max-sm:w-full  ${
-        !imageclose ? 'max-sm:h-[40vh]' : ' max-sm:h-[15vh] '
-      } imageclosetransitition mx-auto flex flex-col items-center gap-2 rounded-3xl bg-gradient-to-b from-[#1b5ca1] to-[#2e5f6e] px-[3vw] py-[2vw] shadow shadow-gray-500 max-sm:rounded-b-none max-sm:px-[6vw]`}
+      className={` w-[25vw] duration-200 max-sm:absolute max-sm:bottom-0 max-sm:w-full  ${!imageclose ? 'max-sm:h-[40vh]' : ' max-sm:h-[15vh] '
+        } imageclosetransitition mx-auto flex flex-col items-center gap-2 rounded-3xl bg-gradient-to-b from-[#1b5ca1] to-[#2e5f6e] px-[3vw] py-[2vw] shadow shadow-gray-500 max-sm:rounded-b-none max-sm:px-[6vw]`}
     >
       <div
         onClick={() => setimageclose(prev => !prev)}
@@ -183,15 +181,14 @@ const Musicplayer = ({ setrecentclose }) => {
       </div>
       <div
         ref={musicanime}
-        className={`w-[40%] ${
-          imageclose && 'max-sm:hidden'
-        } relative mb-5 mt-2 flex aspect-square items-center justify-center rounded-full bg-gray-400`}
+        className={`w-[40%] ${imageclose && 'max-sm:hidden'
+          } relative mb-5 mt-2 flex aspect-square items-center justify-center rounded-full bg-gray-400`}
       >
         <img
           className=" aspect-square rounded-full object-cover"
           src={
             typeof songlist?.[musicindex]?.image === 'object'
-              ? songlist?.[musicindex]?.image?.at(-1)?.link
+              ? songlist?.[musicindex]?.image?.at(-1)?.url
               : songlist?.[musicindex]?.image || 'musicphoto.jpg'
           }
           alt="image"
@@ -209,11 +206,10 @@ const Musicplayer = ({ setrecentclose }) => {
           {songlist?.[musicindex]?.name?.replaceAll('&quot;', '') || 'song'}
         </p>
         <span
-          className={`line-clamp-1 text-gray-400 ${
-            imageclose && 'max-sm:hidden'
-          }`}
+          className={`line-clamp-1 text-gray-400 ${imageclose && 'max-sm:hidden'
+            }`}
         >
-          {songlist?.[musicindex]?.primaryArtists || 'artist'}
+          {songlist?.[musicindex]?.artist ? songlist?.[musicindex]?.artist : songlist?.[musicindex]?.artists?.primary?.[0]?.name || 'artist'}
         </span>
       </div>
 
@@ -260,7 +256,7 @@ const Musicplayer = ({ setrecentclose }) => {
               onEnded={audioendhandle}
               src={
                 typeof songlist?.[musicindex]?.downloadUrl === 'object'
-                  ? songlist?.[musicindex]?.downloadUrl?.at(-1)?.link
+                  ? songlist?.[musicindex]?.downloadUrl?.at(-1)?.url
                   : songlist && songlist[musicindex]?.downloadUrl
               }
               hidden

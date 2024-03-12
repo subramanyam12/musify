@@ -2,13 +2,14 @@ import React from 'react';
 import handlesearchboxclick from '../../customhooks/handlesearchboxclick';
 
 const Searchsubox = ({ name, data, setnestsearchdata, setbool }) => {
+
   return (
     <div className="w-[50%] max-sm:w-full">
       <h1 className="text-shadow m-4 text-lg font-bold capitalize text-white">
         {name}
       </h1>
       <div className="scroll-none flex h-[13vw] flex-col gap-3 overflow-y-auto max-sm:h-[23vh]">
-        {data?.map(({ id, image, title, type, url }) => (
+        {data?.map(({ id, image, title, type }) => (
           <div
             key={id}
             onClick={() =>
@@ -16,7 +17,6 @@ const Searchsubox = ({ name, data, setnestsearchdata, setbool }) => {
                 type,
                 title,
                 id,
-                url,
                 setnestsearchdata,
                 setbool,
               })
@@ -26,7 +26,7 @@ const Searchsubox = ({ name, data, setnestsearchdata, setbool }) => {
             <div className=" w-[3.5vw] max-sm:w-[14vw]">
               <img
                 className="h-full w-full"
-                src={image?.at(-1)?.link}
+                src={image?.at(-1)?.url}
                 alt={title}
               />
             </div>

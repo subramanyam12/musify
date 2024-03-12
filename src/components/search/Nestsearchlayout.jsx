@@ -47,16 +47,15 @@ const Nestsearchlayout = ({ setbool, nestdata }) => {
         </div>
       </div>
       <div
-        className={`flex h-full w-full flex-col ${
-          loading ? 'items-center' : 'px-[10%] max-sm:px-3 '
-        } scroll-none gap-5 overflow-y-auto pb-5 pt-20`}
+        className={`flex h-full w-full flex-col ${loading ? 'items-center' : 'px-[10%] max-sm:px-3 '
+          } scroll-none gap-5 overflow-y-auto pb-5 pt-20`}
       >
         {loading ? (
           <div className="mt-5 h-10 w-10 animate-spin rounded-full border-b-4 border-t-4 border-b-gray-800 border-t-gray-800 "></div>
         ) : (
           nestsearchdata?.map(
             (
-              { id, image, name, album, primaryArtists, language, downloadUrl },
+              { id, image, name, artists, language, downloadUrl },
               i
             ) => (
               <div
@@ -70,7 +69,7 @@ const Nestsearchlayout = ({ setbool, nestdata }) => {
                   <div className=" w-[5vw] rounded-xl bg-[#f7f7f7c5] max-sm:w-[15vw]">
                     <img
                       className="h-full w-full rounded-xl"
-                      src={image?.at(-1)?.link}
+                      src={image?.at(-1)?.url}
                       alt={name}
                     />
                   </div>
@@ -85,29 +84,25 @@ const Nestsearchlayout = ({ setbool, nestdata }) => {
                     </p>
                     <div className="flex flex-col text-sm max-sm:text-[13px]">
                       <p className="text-[#ffffff7e] max-sm:hidden">
-                        {primaryArtists
-                          ? primaryArtists?.length > 60
-                            ? primaryArtists?.substring(0, 60) + '...'
-                            : primaryArtists
-                          : album?.primaryArtists?.length > 60
-                            ? album?.primaryArtists?.substring(0, 60) + '...'
-                            : album?.primaryArtists}
+                        {artists
+                          && artists?.primary?.[0]?.name?.length > 60
+                          ? artists?.primary?.[0]?.name?.substring(0, 60) + '...'
+                          : artists?.primary?.[0]?.name
+                        }
                       </p>
                       <p className="hidden text-[#ffffff7e] max-sm:block">
-                        {primaryArtists
-                          ? primaryArtists?.length > 33
-                            ? primaryArtists?.substring(0, 33) + '...'
-                            : primaryArtists
-                          : album?.primaryArtists?.length > 60
-                            ? album?.primaryArtists?.substring(0, 60) + '...'
-                            : album?.primaryArtists}
+                        {artists
+                          && artists?.primary?.[0]?.name?.length > 33
+                          ? artists?.primary?.[0]?.name?.substring(0, 33) + '...'
+                          : artists?.primary?.[0]?.name
+                        }
                       </p>
                       <span className=" text-[#ffffffb9]">{language}</span>
                     </div>
                   </div>
                 </div>
                 <div className=" invisible group-hover:visible">
-                  <Download url={downloadUrl?.at(-1)?.link} name={name} />
+                  <Download url={downloadUrl?.at(-1)?.url} name={name} />
                 </div>
               </div>
             )

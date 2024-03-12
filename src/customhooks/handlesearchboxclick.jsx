@@ -1,4 +1,4 @@
-import { APIFetch, playlistfetch } from './APIFetch';
+import { playlistfetch, song_album_fetch, albumsfetch } from './APIFetch';
 
 const REPLACELIST = ['&quot;', '&amp;', '&#039;', '(', ')', '&', ';'];
 
@@ -6,7 +6,6 @@ const handlesearchboxclick = ({
   type,
   title,
   id,
-  url,
   setbool,
   setnestsearchdata,
 }) => {
@@ -14,22 +13,19 @@ const handlesearchboxclick = ({
   REPLACELIST.forEach(item => {
     title = title.replaceAll(item, '');
   });
-
-  if (type === 'playlist' || type === 'album') {
-    playlistfetch(
-      type,
-      type === 'playlist' ? 'id' : 'link',
-      type === 'playlist' ? id : url
-    )
-      .then(res => {
-        setnestsearchdata(res?.data?.data?.songs);
-      })
+  if (type === 'artist') {
+    playlistfetch(id)
+      .then(res => setnestsearchdata(res?.data?.data?.songs))
       .catch(err => console.log(err));
-  } else {
-    APIFetch('songs', title, 30)
-      .then(res => {
-        setnestsearchdata(res.data?.data?.results);
-      })
+  }
+  else if (type === 'album') {
+    albumsfetch(id)
+      .then(res => setnestsearchdata(res?.data?.data?.songs))
+      .catch(err => console.log(err));
+  }
+  else if (type === 'song' || type === 'playlist') {
+    song_album_fetch(title)
+      .then(res => setnestsearchdata(res?.data?.data?.results))
       .catch(err => console.log(err));
   }
 };

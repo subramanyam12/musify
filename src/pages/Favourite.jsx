@@ -32,7 +32,7 @@ const Favourite = () => {
         <>
           <div className="scroll-none flex h-full w-full flex-col gap-5 overflow-y-auto py-10 pl-[10%] max-sm:pl-0">
             {favouritelist?.map(
-              ({ id, image, name, album, primaryArtists, downloadUrl }, i) => (
+              ({ id, image, name, artist, downloadUrl }, i) => (
                 <div
                   key={id}
                   className="group flex w-[90%] cursor-pointer items-center justify-between max-sm:w-full max-sm:cursor-default max-sm:px-3"
@@ -60,22 +60,18 @@ const Favourite = () => {
                           : name}
                       </p>
                       <span className="text-sm text-[#ffffff7e] max-sm:hidden">
-                        {primaryArtists
-                          ? primaryArtists?.length > 50
-                            ? primaryArtists?.substring(0, 50) + '...'
-                            : primaryArtists
-                          : album?.primaryArtists?.length > 50
-                            ? album?.primaryArtists?.substring(0, 50) + '...'
-                            : album?.primaryArtists}
+                        {artist
+                          && artist?.length > 50
+                          ? artist?.substring(0, 50) + '...'
+                          : artist
+                        }
                       </span>
                       <span className="hidden text-sm text-[#ffffff7e] max-sm:block">
-                        {primaryArtists
-                          ? primaryArtists?.length > 30
-                            ? primaryArtists?.substring(0, 30) + '...'
-                            : primaryArtists
-                          : album?.primaryArtists?.length > 33
-                            ? album?.primaryArtists?.substring(0, 33) + '...'
-                            : album?.primaryArtists}
+                        {artist
+                          && artist?.length > 30
+                          ? artist?.substring(0, 30) + '...'
+                          : artist
+                        }
                       </span>
                     </div>
                   </div>

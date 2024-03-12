@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { playlistfetch, APIFetch } from '../customhooks/APIFetch';
+import { albumsfetch, song_album_fetch } from '../customhooks/APIFetch';
 import { AiFillPlayCircle } from 'react-icons/ai';
 
 import Artists from './Artists';
@@ -13,14 +13,14 @@ const Introduction = () => {
   const setsong = setartistvalue();
 
   useEffect(() => {
-    APIFetch('playlists', 'trending', 10)
+    song_album_fetch('trending playlists', 'album', 10)
       .then(res => settrending(res.data?.data?.results))
       .catch(err => console.log(err))
       .finally(() => setTimeout(() => setloading(false), 700));
   }, []);
 
   const handletrendingclick = id => {
-    playlistfetch('playlist', 'id', id)
+    albumsfetch(id)
       .then(res => setsong({ index: 0, nestsearchdata: res.data?.data?.songs }))
       .catch(err => console.log(err));
   };
@@ -35,14 +35,14 @@ const Introduction = () => {
           {loading ? (
             <Introskeletion />
           ) : (
-            trending.map(({ id, name, image, language }) => (
+            trending?.map(({ id, name, image, language }) => (
               <div
                 key={id}
                 style={{ scrollSnapAlign: 'center' }}
                 className="group relative aspect-[1.5/1] rounded-3xl bg-[#ffffff1a] shadow"
               >
                 <img
-                  src={image?.at(-1)?.link}
+                  src={image?.at(-1)?.url}
                   alt={name}
                   className="object-cove h-full w-full rounded-3xl"
                 />

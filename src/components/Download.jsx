@@ -23,9 +23,8 @@ const Download = ({ url, name, size = false }) => {
         >
           <abbr title="download">
             <div
-              className={`hover:bg-[#00000059] ${
-                size && 'scale-75'
-              } rounded-full border-[1px] border-[#ffffff48] p-2`}
+              className={`hover:bg-[#00000059] ${size && 'scale-75'
+                } rounded-full border-[1px] border-[#ffffff48] p-2`}
             >
               <IoMdDownload />
             </div>

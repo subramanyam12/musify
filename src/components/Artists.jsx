@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Artistskeletion from '../loadingskeletons/Artistskeletion';
 import { setartistvalue } from '../customhooks/Context';
-import { APIFetch } from '../customhooks/APIFetch';
+import { song_album_fetch, playlistfetch } from '../customhooks/APIFetch';
 
 const Artists = () => {
   const [artists, setartists] = useState([
@@ -12,17 +12,15 @@ const Artists = () => {
   const setsong = setartistvalue();
 
   useEffect(() => {
-    APIFetch('artists', 'top artists')
-      .then(res => setartists(res.data.data.results))
+    song_album_fetch('top artists', 'artist')
+      .then(res => setartists(res?.data?.data?.results))
       .catch(err => console.log(err))
       .finally(() => setTimeout(() => setloading(false), 700));
   }, []);
 
-  const artistclickhandle = name => {
-    APIFetch('songs', name)
-      .then(res =>
-        setsong({ index: 0, nestsearchdata: res?.data?.data?.results })
-      )
+  const artistclickhandle = (id) => {
+    playlistfetch(id)
+      .then(res => setsong({ index: 0, nestsearchdata: res?.data?.data?.songs }))
       .catch(err => console.log(err));
   };
 
@@ -36,14 +34,14 @@ const Artists = () => {
           {loading ? (
             <Artistskeletion />
           ) : (
-            artists.map(({ id, name, image }) => (
+            artists?.map(({ id, name, image }) => (
               <div
                 key={id}
-                onClick={() => artistclickhandle(name)}
+                onClick={() => artistclickhandle(id)}
                 className=" relative aspect-square w-[13vw] cursor-pointer rounded-3xl bg-[#ffffff1a] shadow max-sm:w-[35vw] max-sm:cursor-default"
               >
                 <img
-                  src={image?.at(-1)?.link}
+                  src={image?.at(-1)?.url}
                   alt={name}
                   className="h-full w-full rounded-3xl"
                 />

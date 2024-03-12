@@ -13,10 +13,9 @@ export const setartistvalue = () => {
 
 export const Context = ({ children }) => {
   const [song, setsong] = useState({ index: 0, nestsearchdata: [] });
-  const [homedata, sethomedata] = useState([]);
 
   return (
-    <musicontext.Provider value={{ song, homedata, sethomedata }}>
+    <musicontext.Provider value={{ song }}>
       <setartistsongs.Provider value={setsong}>
         {children}
       </setartistsongs.Provider>

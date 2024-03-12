@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const APIFetch = async (type = 'all', query = '', limit = 20) => {
+export const APIFetch = async (query = '') => {
   return await axios.get(
-    `https://saavn.dev/search/${type}?query=${query}&limit=${limit}`,
+    `https://saavn.dev/api/search?query=${query}`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -11,14 +11,30 @@ export const APIFetch = async (type = 'all', query = '', limit = 20) => {
   );
 };
 
-export const playlistfetch = async (name, queryname, query) => {
-  return await axios.get(`https://saavn.dev/${name}s?${queryname}=${query}`, {
+export const playlistfetch = async (id, name = "artist") => {
+  return await axios.get(`https://saavn.dev/api/${name}s/${id}/songs`, {
     headers: {
       'Content-Type': 'application/json',
     },
   });
 };
 
-export const fetchhomepage = () => {
-  return axios.get('https://saavn.dev/modules?language=hindi,english,telugu');
-};
+export const song_album_fetch = async (name, type = 'song', limit = '15') => {
+  return await axios.get(`https://saavn.dev/api/search/${type}s?query=${name}&limit=${limit}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+}
+
+export const albumsfetch = async (id) => {
+  return await axios.get(`https://saavn.dev/api/albums?id=${id}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+}
+
+

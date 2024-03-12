@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Discover from './Discover';
-import Artistpage from './Artistpage';
+// import Artistpage from './Artistpage';
 import Favourite from './Favourite';
 import Albums from './Albums';
 import Introduction from '../components/Introduction';
@@ -40,10 +40,10 @@ const Header = () => {
 
   const fetchsearch = async value => {
     if (!value) return;
-    APIFetch('all', value)
+    APIFetch(value)
       .then(res => {
-        let data = res.data.data;
-        setsearchdata(res.data.data);
+        let data = res?.data?.data;
+        setsearchdata(data);
         setsearchloading(false);
         let testbool = true;
         for (let i in data) {
@@ -117,7 +117,7 @@ const Header = () => {
                           <div className=" w-[5vw] rounded-xl bg-[#f7f7f7c5] max-sm:w-[15vw]">
                             <img
                               className="h-full w-full rounded-xl"
-                              src={image?.at(-1)?.link}
+                              src={image?.at(-1)?.url}
                               alt={title}
                             />
                           </div>
@@ -159,7 +159,7 @@ const Header = () => {
             <Route index Component={Introduction} />
             <Route path="discover" Component={Discover} />
             <Route path="albums" Component={Albums} />
-            <Route path="playlists" Component={Artistpage} />
+            {/* <Route path="playlists" Component={Artistpage} /> */}
             <Route path="favourites" Component={Favourite} />
           </Routes>
         )}
