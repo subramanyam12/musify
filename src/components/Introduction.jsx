@@ -29,7 +29,7 @@ const Introduction = () => {
     <div className="flex h-full flex-col justify-around  max-sm:justify-start max-sm:gap-4 max-sm:pt-4">
       <div
         style={{ scrollSnapType: 'x mandatory' }}
-        className="scroll-none flex h-[23vw] w-full overflow-y-auto rounded-3xl py-2 shadow-lg  max-sm:h-[33vh]"
+        className="scroll-none flex h-[23vw] w-full overflow-auto rounded-3xl py-2 shadow-lg max-sm:h-[33vh]"
       >
         <div className="flex h-full gap-3">
           {loading ? (
